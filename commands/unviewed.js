@@ -1,0 +1,34 @@
+var admin = require("firebase-admin");
+const db = admin.firestore();
+const { FieldValue } = require('@google-cloud/firestore');
+const Discord = require('discord.js');
+const {EmbedBuilder} = require('discord.js');
+
+module.exports ={
+    name: "unviewed",
+    description: "Displays the unviewed list",
+    async execute(message,args){
+        let unarrray = [];
+        let arrlength = 0;
+        await db.collection('servers').where('name', '==', message.guild.id).get().then((snapshot) => {
+          snapshot.docs.forEach(doc =>{
+            unarrray = doc.data().unviewed;
+            arrlength = unarrray.length;
+          })
+        })
+        let stringcheese = "";
+      
+        for(var i =0; i < arrlength; i++){
+          stringcheese+= (i+1) +". **"+unarrray[i]+"**\n";
+        }
+        if(unarrray.length == 0){
+          stringcheese = "Type ``-S add {movie}`` to add your watched movies to the unviewed list!";
+        }
+        const Embeding = new EmbedBuilder()
+        .setColor("#00FEC1")
+        .setTitle('Unviewed List')
+        .setTimestamp()
+        .setDescription(stringcheese);
+        message.channel.send({embeds:[Embeding]}); 
+    }
+}
