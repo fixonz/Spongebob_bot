@@ -136,6 +136,12 @@ client.on("messageCreate", (msg) => {
         case 'list':
             client.commands.get('list').execute(msg, args);
             break;
+        case 'tweets':
+            client.commands.get('tweets').execute(msg, args);
+            break;
+        case 'weather':
+            client.commands.get('weather').execute(msg, args);
+            break;
         case 'help':
             client.commands.get('help').execute(msg, args);
             break;

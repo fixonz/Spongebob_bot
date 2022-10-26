@@ -25,6 +25,8 @@
     "node-fetch": "^2.6.7",
     "one-liner-joke": "^1.2.2",
     "path": "^0.12.7",
-    "success-motivational-quotes": "^1.0.8"
+    "success-motivational-quotes": "^1.0.8",
+    "twitter": "^1.7.1",
+    "weather-js": "^2.0.0"
   }
 }
