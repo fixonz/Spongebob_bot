@@ -1,1 +1,6 @@
-
+{
+  "name": "fixzzeee/new-bot-y",
+  "timeout": 10000,
+  "connector": false,
+  "events": {}
+}
